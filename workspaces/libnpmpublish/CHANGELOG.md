@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.0.0-pre.0](https://github.com/npm/cli/compare/libnpmpublish-v11.2.0-pre.0...libnpmpublish-v12.0.0-pre.0) (2026-06-11)
+### ⚠️ BREAKING CHANGES
+* `opts.access` now defaults to `null` instead of `'public'`. With `null`, libnpmpublish no longer sets an explicit access level in the publish payload, so new scoped packages are created as `restricted` (registry default) and republishes preserve the existing access level. Callers that want to force public access must now pass `access: 'public'` explicitly.
+### Bug Fixes
+* [`79b0c84`](https://github.com/npm/cli/commit/79b0c8490c708f12f87d9fee16878bc95ace31e6) [#9419](https://github.com/npm/cli/pull/9419) default opts.access to null to preserve registry behavior (@owlstronaut)
+* [`c5292fa`](https://github.com/npm/cli/commit/c5292fa8a09a56b25394d393faf21e47ffb096c0) [#9422](https://github.com/npm/cli/pull/9422) use prerelease strategy without a bug (@owlstronaut)
+
 ## [11.2.0-pre.0.0](https://github.com/npm/cli/compare/libnpmpublish-v11.1.3...libnpmpublish-v11.2.0-pre.0.0) (2026-05-20)
 ### Features
 * [`254809e`](https://github.com/npm/cli/commit/254809e318ee0046092d07d68a99154c3f672147) [#9201](https://github.com/npm/cli/pull/9201) npm stage (#9201) (@reggi, @Copilot)

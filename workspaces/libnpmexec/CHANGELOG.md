@@ -40,6 +40,19 @@
 
 * [workspace](https://github.com/npm/cli/releases/tag/arborist-v9.4.2): `@npmcli/arborist@9.4.2`
 
+## [10.3.0-pre.0](https://github.com/npm/cli/compare/libnpmexec-v10.2.6-pre.0...libnpmexec-v10.3.0-pre.0) (2026-06-11)
+### Features
+* [`64e3f79`](https://github.com/npm/cli/commit/64e3f798344e66f4c500636cb8aec5c8111a1fe9) [#9480](https://github.com/npm/cli/pull/9480) allowScripts tooling and inBundle hardening (#9480) (@JamieMagee)
+### Bug Fixes
+* [`6901bb1`](https://github.com/npm/cli/commit/6901bb185a5ca323d6d76561136a906a5023ea6d) [#9436](https://github.com/npm/cli/pull/9436) escape executable name in libnpmexec run-script (#9436) (@rootvector2)
+* [`c5292fa`](https://github.com/npm/cli/commit/c5292fa8a09a56b25394d393faf21e47ffb096c0) [#9422](https://github.com/npm/cli/pull/9422) use prerelease strategy without a bug (@owlstronaut)
+* [`6237783`](https://github.com/npm/cli/commit/62377832db5f91ae50856ef871c16e3d07c074e2) [#9408](https://github.com/npm/cli/pull/9408) exempt local project introspection from allow-directory (@owlstronaut)
+
+
+### Dependencies
+
+* [workspace](https://github.com/npm/cli/releases/tag/arborist-v10.0.0-pre.1): `@npmcli/arborist@10.0.0-pre.1`
+
 ## [10.2.6-pre.0.0](https://github.com/npm/cli/compare/libnpmexec-v10.2.5...libnpmexec-v10.2.6-pre.0.0) (2026-05-20)
 ### Bug Fixes
 * [`e9b0157`](https://github.com/npm/cli/commit/e9b0157b367aef184e7c4e99b90d9fcb8f0bff54) [#9255](https://github.com/npm/cli/pull/9255) libnpmexec: skip redundant reify for cached directory specs (#9255) (@manzoorwanijk)

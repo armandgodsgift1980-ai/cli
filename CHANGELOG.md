@@ -1,5 +1,66 @@
 # Changelog
 
+## [12.0.0-pre.1](https://github.com/npm/cli/compare/v12.0.0-pre.0...v12.0.0-pre.1) (2026-06-11)
+### ⚠️ BREAKING CHANGES
+* allow-git and allow-remote now default to "none"; set them to "all" (or "root") to install git or user-supplied tarball-URL dependencies.
+* root \`preinstall\` now runs before dependencies are installed.
+* unknown configs in .npmrc, unknown CLI flags, abbreviated flags, and single-hyphen multi-char shorthands now throw instead of warning.
+### Features
+* [`c3e1a71`](https://github.com/npm/cli/commit/c3e1a7175c6475553e212e2f7671bd31bfe07aba) [#9532](https://github.com/npm/cli/pull/9532) add min-release-age-exclude config (@JamieMagee, @caseyjhol)
+* [`5cd5150`](https://github.com/npm/cli/commit/5cd5150d3e85dcf5d246e7e5c9de216c2ff849db) [#9424](https://github.com/npm/cli/pull/9424) default-deny install scripts (allowScripts opt-in) [v12] (@JamieMagee)
+* [`64e3f79`](https://github.com/npm/cli/commit/64e3f798344e66f4c500636cb8aec5c8111a1fe9) [#9480](https://github.com/npm/cli/pull/9480) allowScripts tooling and inBundle hardening (#9480) (@JamieMagee)
+* [`caa3295`](https://github.com/npm/cli/commit/caa329568d32587e53f6e098f43b550dd2685034) [#9466](https://github.com/npm/cli/pull/9466) default allow-git and allow-remote to none (@owlstronaut)
+* [`f2e4a28`](https://github.com/npm/cli/commit/f2e4a285ec5ed43055462a47db6d330758a16e64) [#9351](https://github.com/npm/cli/pull/9351) add a global npmignore file (#9351) (@ljharb)
+* [`c9be2d1`](https://github.com/npm/cli/commit/c9be2d1efadd353e743bcebd52faaa5aa64e2fc0) [#9153](https://github.com/npm/cli/pull/9153) publish --access=private alias for restricted (#9153) (@reggi, @Copilot)
+* [`7068d42`](https://github.com/npm/cli/commit/7068d4286eb446fdb0ded08d15d7b5c3883d80f5) [#9360](https://github.com/npm/cli/pull/9360) Phase 1 of `allowScripts` opt-in install-script policy (#9360) (@JamieMagee)
+* [`979518d`](https://github.com/npm/cli/commit/979518dd198b9f2beb788c6c3cdcd1e055b03d22) [#9276](https://github.com/npm/cli/pull/9276) error on unknown configs, flags, and abbreviations (#9276) (@owlstronaut)
+### Bug Fixes
+* [`abf78b3`](https://github.com/npm/cli/commit/abf78b3c143a1825de910c0e401d01c0d3f5199b) [#9540](https://github.com/npm/cli/pull/9540) match dotted and versioned args in approve-scripts/deny-scripts (@owlstronaut)
+* [`f6270d1`](https://github.com/npm/cli/commit/f6270d1069dcf60b4798f83eb87b6580162902e6) [#9531](https://github.com/npm/cli/pull/9531) emit valid JSON from approve-scripts/deny-scripts --json (@owlstronaut)
+* [`0e55f97`](https://github.com/npm/cli/commit/0e55f97deea0f2395196dd572fac5fd7c9fbee38) [#9492](https://github.com/npm/cli/pull/9492) pass script-shell to publish lifecycle hooks (@Zelys-DFKH)
+* [`2cbb13b`](https://github.com/npm/cli/commit/2cbb13b77edd9410704eac6f30ffea30a18c7046) [#9490](https://github.com/npm/cli/pull/9490) recognize allowScripts for local link targets (#9490) (@cyphercodes, @cyphercodes)
+* [`bf623e0`](https://github.com/npm/cli/commit/bf623e0a9ea568a47b777c563e48a097cb12e442) [#9473](https://github.com/npm/cli/pull/9473) validate registry path for allow-remote tarballs (@Abhinav-143x)
+* [`6be874b`](https://github.com/npm/cli/commit/6be874b88174e87f004b31cbbdda54d0d50cb399) [#9479](https://github.com/npm/cli/pull/9479) list pending scripts in approve-scripts when ignore-scripts is set (#9479) (@JamieMagee)
+* [`6603b2c`](https://github.com/npm/cli/commit/6603b2c5fdbb5d4ec504199b2f10b5b378168016) [#9469](https://github.com/npm/cli/pull/9469) suggest --allow-scripts for global installs in unreviewed-scripts warnings (#9469) (@JamieMagee)
+* [`fe820b6`](https://github.com/npm/cli/commit/fe820b6f2bbac9fdb3c8937d6d5bf6544bac55fc) [#9442](https://github.com/npm/cli/pull/9442) invalid issue template YAML indentation (#9442) (@fallintoplace)
+* [`fe41ae7`](https://github.com/npm/cli/commit/fe41ae7c6b38e7e9957b646bf379e2b5daae03f9) [#9404](https://github.com/npm/cli/pull/9404) show full parent command path in subcommand usage errors (#9404) (@shaanmajid)
+* [`75bf7de`](https://github.com/npm/cli/commit/75bf7decec60da0e68296356b8da82d3eb18f0bc) [#9456](https://github.com/npm/cli/pull/9456) respect allowScripts policy in prune, dedupe, uninstall, audit fix, and link (@JamieMagee)
+* [`6efac6e`](https://github.com/npm/cli/commit/6efac6ead98af50c5a40fc45cb657bbee496a584) [#9453](https://github.com/npm/cli/pull/9453) config: clarify --all help so it's accurate for approve-scripts and deny-scripts (@JamieMagee)
+* [`b97edc0`](https://github.com/npm/cli/commit/b97edc0193017800ecb1f26d212977729ca19739) [#9430](https://github.com/npm/cli/pull/9430) audit: don't apply min-release-age before filter when verifying installed signatures (@JamieMagee)
+* [`080e3b2`](https://github.com/npm/cli/commit/080e3b29e69d35d7b0f4823a9ac7ab4e1e4d1af6) [#9425](https://github.com/npm/cli/pull/9425) block forbidden keys in Queryable setter to prevent prototype pollution (@12122J, @claude)
+* [`c5292fa`](https://github.com/npm/cli/commit/c5292fa8a09a56b25394d393faf21e47ffb096c0) [#9422](https://github.com/npm/cli/pull/9422) use prerelease strategy without a bug (@owlstronaut)
+* [`33aebaa`](https://github.com/npm/cli/commit/33aebaa58541ac0af3882cc0b56f09b1b676740a) [#9410](https://github.com/npm/cli/pull/9410) fix typo of fullMetadata (@owlstronaut)
+* [`2a03860`](https://github.com/npm/cli/commit/2a03860fcafe92b22770fc554b25994b29bacbdb) [#9267](https://github.com/npm/cli/pull/9267) run root preinstall before reify (@owlstronaut)
+* [`c0fc549`](https://github.com/npm/cli/commit/c0fc54935af8e17a3a96cbdeac52bb4c597803b6) [#9372](https://github.com/npm/cli/pull/9372) config: pause progress spinner during interactive editor spawn (#9372) (@Zelys-DFKH, @claude)
+### Documentation
+* [`357e8cd`](https://github.com/npm/cli/commit/357e8cdcb8f44326a50cee2539219a91d8bfbbe5) [#9520](https://github.com/npm/cli/pull/9520) approve-scripts only throws EGLOBAL when run with -g (@JamieMagee)
+* [`bcf01c6`](https://github.com/npm/cli/commit/bcf01c6b1889ac97cf0f8a339da298a64f0767ef) [#9505](https://github.com/npm/cli/pull/9505) clarify package.json override value specs (#9505) (@ded-furby)
+* [`455aa4a`](https://github.com/npm/cli/commit/455aa4a17b92a77ffbd474c4dc17a16f71cfe6b1) [#9401](https://github.com/npm/cli/pull/9401) use the latest version for global update and outdated's `wanted` (#9401) (@liangmiQwQ)
+* [`aac80dc`](https://github.com/npm/cli/commit/aac80dc00748863ed4bdec90a49e33b0d9d3ed93) [#9470](https://github.com/npm/cli/pull/9470) update minimum npm required for npm trust (@meeech)
+* [`d124c08`](https://github.com/npm/cli/commit/d124c0858da0b138cda2addcb0987b063ca86a47) [#9385](https://github.com/npm/cli/pull/9385) Document `npm_old_version` and `npm_new_version` environment variables (#9385) (@36degrees)
+### Dependencies
+* [`d28783e`](https://github.com/npm/cli/commit/d28783e3f00feecf4ca76b497e80ffd281af1655) [#9420](https://github.com/npm/cli/pull/9420) `undici@6.26.0`
+* [`7f6c6ef`](https://github.com/npm/cli/commit/7f6c6ef49023286bed47a334cc2bd0064cb8ec05) [#9420](https://github.com/npm/cli/pull/9420) `sigstore@4.1.1`
+* [`ee61b6e`](https://github.com/npm/cli/commit/ee61b6e8279b1d26d28a47613d66a9deb5c06529) [#9420](https://github.com/npm/cli/pull/9420) `lru-cache@11.5.1`
+* [`d5ddef2`](https://github.com/npm/cli/commit/d5ddef2571b5b26dfade31eb040dbd4a096aeed8) [#9420](https://github.com/npm/cli/pull/9420) `@sigstore/verify@3.1.1`
+* [`11e7ac7`](https://github.com/npm/cli/commit/11e7ac72c3ea0490f8d5edfb4bd5a60729d25b66) [#9420](https://github.com/npm/cli/pull/9420) `@sigstore/core@3.2.1`
+* [`11cd66e`](https://github.com/npm/cli/commit/11cd66e10490af0ef46ceeb5e8764a855580a2de) [#9420](https://github.com/npm/cli/pull/9420) `@npmcli/agent@4.0.2`
+* [`8be4c04`](https://github.com/npm/cli/commit/8be4c046fbbbb8ede02a288b727fcbf7470956fb) [#9420](https://github.com/npm/cli/pull/9420) `semver@7.8.1`
+* [`577d61d`](https://github.com/npm/cli/commit/577d61da646833994ecfda8b2f1dc993ec9b58d1) [#9420](https://github.com/npm/cli/pull/9420) `make-fetch-happen@15.0.6`
+### Chores
+* [`4e2496a`](https://github.com/npm/cli/commit/4e2496a6a7ae015483dd9ff9072830c939baddff) [#9513](https://github.com/npm/cli/pull/9513) update issue templates - better language (@owlstronaut)
+* [`7a997ac`](https://github.com/npm/cli/commit/7a997ac48ead642efcbb48fc5da5d99f0c850389) [#9512](https://github.com/npm/cli/pull/9512) update issue templates (#9512) (@owlstronaut)
+* [`da63c79`](https://github.com/npm/cli/commit/da63c79be758fd9d3faa9f5edf962219c805c579) [#9420](https://github.com/npm/cli/pull/9420) dev dependency updates (@owlstronaut)
+* [`5fc9bc0`](https://github.com/npm/cli/commit/5fc9bc0f202aadedd7b123394560047671afca6b) [#9393](https://github.com/npm/cli/pull/9393) sanitize newlines in flags table default and type values (#9393) (@reggi, @Copilot)
+* [workspace](https://github.com/npm/cli/releases/tag/arborist-v10.0.0-pre.1): `@npmcli/arborist@10.0.0-pre.1`
+* [workspace](https://github.com/npm/cli/releases/tag/config-v11.0.0-pre.1): `@npmcli/config@11.0.0-pre.1`
+* [workspace](https://github.com/npm/cli/releases/tag/libnpmdiff-v9.0.0-pre.0): `libnpmdiff@9.0.0-pre.0`
+* [workspace](https://github.com/npm/cli/releases/tag/libnpmexec-v10.3.0-pre.0): `libnpmexec@10.3.0-pre.0`
+* [workspace](https://github.com/npm/cli/releases/tag/libnpmfund-v7.0.20-pre.1): `libnpmfund@7.0.20-pre.1`
+* [workspace](https://github.com/npm/cli/releases/tag/libnpmpack-v10.0.0-pre.1): `libnpmpack@10.0.0-pre.1`
+* [workspace](https://github.com/npm/cli/releases/tag/libnpmpublish-v12.0.0-pre.0): `libnpmpublish@12.0.0-pre.0`
+* [workspace](https://github.com/npm/cli/releases/tag/libnpmversion-v9.0.0-pre.1): `libnpmversion@9.0.0-pre.1`
+
 ## [12.0.0-pre.0.0](https://github.com/npm/cli/compare/v11.12.1...v12.0.0-pre.0.0) (2026-05-20)
 ### ⚠️ BREAKING CHANGES
 * npm view --json now always returns an array.
