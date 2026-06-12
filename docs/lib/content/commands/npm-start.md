@@ -1,4 +1,148 @@
----
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+
+const Stack = createNativeStackNavigator();
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>MY GPS TO MY PTS</Text>
+      <Text style={styles.subtitle}>No Uber. No Lyft. You drive.</Text>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Avatar')}>
+        <Text style={styles.buttonText}>🎨 Customize Your Truck</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Map')}>
+        <Text style={styles.buttonText}>🗺️ Open GPS Map</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function AvatarScreen({ navigation }) {
+  const trucks = [
+    "Classic Atlanta Work Truck",
+    "Battle-Tested Overlander",
+    "Veteran Rebuild"
+  ];
+  const = useState(0);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>CHOOSE YOUR RIG</Text>
+      <Text style={{ fontSize: 100, marginVertical: 30 }}>🚚</Text>
+
+      <ScrollView>
+        {trucks.map((truck, i) => (
+          <TouchableOpacity 
+            key={i}
+            style={ }
+            onPress={() => setSelected(i)}
+          >
+            <Text style={{ color: selected === i ? 'black' : 'white', fontWeight: 'bold' }}>
+              {truck}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Map')}>
+        <Text style={styles.buttonText}>SAVE TRUCK & DRIVE</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function MapScreen({ navigation }) {
+  const = useState(1850);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>📍 LIVE GPS MAP</Text>
+      <Text style={{ fontSize: 110, marginVertical: 30 }}>🚚</Text>
+      <Text style={{ color: '#00ff9d', fontSize: 20 }}>Classic Atlanta Work Truck</Text>
+      <Text style={{ color: 'white', marginTop: 30 }}>Current Road: Anxiety Lane</Text>
+      <Text style={{ color: '#00ff9d', marginTop: 10 }}>Progress: 68%</Text>
+      <Text style={{ color: '#00ff9d', marginTop: 20 }}>GPS Points: {points}</Text>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Game')}>
+        <Text style={styles.buttonText}>🎮 Play Mini-Game</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={ } onPress={() => navigation.navigate('Emergency')}>
+        <Text style={styles.buttonText}>🚨 EMERGENCY PULL OVER</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function GameScreen({ navigation }) {
+  const = useState(0);
+
+  return (
+    <View style={styles.container}>
+      <Text style={{ color: '#ff2d55', fontSize: 32, textAlign: 'center', marginBottom: 20 }}>FALSE ALARM</Text>
+      <Text style={{ color: 'white', textAlign: 'center' }}>Tap the alarms to silence them</Text>
+
+      <TouchableOpacity 
+        onPress={() => setScore(s => s + 30)}
+        style={{ padding: 50, backgroundColor: '#ff2d55', borderRadius: 999, alignSelf: 'center', marginVertical: 40 }}>
+        <Text style={{ fontSize: 70 }}>🚨</Text>
+      </TouchableOpacity>
+
+      <Text style={{ color: '#00ff9d', fontSize: 26, textAlign: 'center' }}>Score: {score}</Text>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+        <Text style={styles.buttonText}>COMPLETE ROUTE</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function EmergencyScreen() {
+  return (
+    <View style={[styles.container, {backgroundColor: '#1a0000'}]}>
+      <Text style={{ color: '#ff2d55', fontSize: 38, fontWeight: 'bold', textAlign: 'center', marginBottom: 30 }}>
+        PULL OVER NOW
+      </Text>
+      <TouchableOpacity style={styles.bigRedButton}>
+        <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold' }}>📞 CALL 988 NOW</Text>
+      </TouchableOpacity>
+      <Text style={{ color: 'white', textAlign: 'center', marginTop: 40 }}>
+        You are not alone.
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#0a0a0a', padding: 20, justifyContent: 'center' },
+  title: { color: '#00ff9d', fontSize: 32, fontWeight: 'bold', textAlign: 'center' },
+  subtitle: { color: 'white', textAlign: 'center', marginBottom: 40 },
+  header: { color: '#00ff9d', fontSize: 26, textAlign: 'center', marginBottom: 20 },
+  button: { backgroundColor: '#00ff9d', padding: 18, borderRadius: 16, marginVertical: 10 },
+  buttonText: { textAlign: 'center', fontWeight: 'bold', fontSize: 18 },
+  option: { padding: 18, backgroundColor: '#1a1a1a', marginVertical: 8, borderRadius: 12 },
+  selected: { backgroundColor: '#00ff9d' },
+  bigRedButton: { backgroundColor: '#ff2d55', padding: 25, borderRadius: 16, marginTop: 30 }
+});
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Avatar" component={AvatarScreen} />
+        <Stack.Screen name="Map" component={MapScreen} />
+        <Stack.Screen name="Game" component={GameScreen} />
+        <Stack.Screen name="Emergency" component={EmergencyScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}---
 title: npm-start
 section: 1
 description: Start a package
